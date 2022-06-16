@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class SumOfDigit {
     static int sum(int n) {
         if (n == 0)
@@ -6,6 +8,9 @@ public class SumOfDigit {
     }
 
     public static void main(String[] args) {
-        System.out.println(sum(123));
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        System.out.println("Sum: " + sum(sc.nextInt()));
+        sc.close();
     }
 }
