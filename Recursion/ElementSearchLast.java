@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class ElementSearchLast {
     static int getIndex(int arr[], int index, int num) {
-        if (arr.length == 0)
+        if (index < 0)
             return -1;
         if (arr[index] == num)
             return index;
