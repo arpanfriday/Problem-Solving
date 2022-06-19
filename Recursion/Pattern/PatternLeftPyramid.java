@@ -1,4 +1,4 @@
-public class Pattern {
+public class PatternLeftPyramid {
     static void leftPyramid(int n, int row) {
         if (row > n)
             return;
