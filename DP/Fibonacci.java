@@ -29,12 +29,23 @@ public class Fibonacci {
         return result;
     }
 
+    static int fiboTabu(int n) {
+        int[] cache = new int[n + 1];
+        cache[0] = 0;
+        cache[1] = 1;
+        for (int i = 2; i <= n; i++) {
+            cache[i] = cache[i - 1] + cache[i - 2];
+        }
+        return cache[n];
+    }
+
     public static void main(String[] args) {
-        int n = 5;
+        int n = 8;
         System.out.println(fibo(n));
         System.out.println("Recursive call: " + call);
         int cache[] = new int[n + 1];
         System.out.println(fiboMemo(n, cache));
         System.out.println("Memoization call: " + call2);
+        System.out.println(fiboTabu(n));
     }
 }
