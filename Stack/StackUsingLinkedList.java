@@ -62,6 +62,22 @@ class DoublyLinkedListOperations<T> {
         print();
     }
 
+    int peek() {
+        if (start == null) {
+            throw new RuntimeException("LL is empty. Nothing to peek");
+        }
+        Node<T> temp = start;
+        while (temp.next != null) {
+            temp = temp.next;
+        }
+        return (int) temp.data;
+    }
+
+    boolean isEmpty() {
+        if (start == null)
+            return true;
+        return false;
+    }
 }
 
 public class StackUsingLinkedList {
@@ -71,6 +87,8 @@ public class StackUsingLinkedList {
         while (true) {
             System.out.println("|   1. Add in the ending");
             System.out.println("|   2. Delete at ending");
+            System.out.println("|   3. Peek element");
+            System.out.println("|   4. Check if stack is empty");
             System.out.println("|   10. Exit");
             System.out.print("|   Enter the choice: ");
             int choice = sc.nextInt();
@@ -85,6 +103,12 @@ public class StackUsingLinkedList {
                     break;
                 case 2:
                     opr.delete();
+                    break;
+                case 3:
+                    System.out.println(opr.peek());
+                    break;
+                case 4:
+                    System.out.println(opr.isEmpty());
                     break;
                 case 10:
                     sc.close();
