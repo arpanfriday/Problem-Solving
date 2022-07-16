@@ -1,5 +1,6 @@
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
@@ -134,6 +135,27 @@ class BinaryTreeOperations {
         System.out.println(root.data);
     }
 
+    void postOrderIterative(BinaryTree<Integer> root) {
+        if (root == null) {
+            return;
+        }
+        Stack<BinaryTree> stack = new Stack<>();
+        ArrayList<Integer> list = new ArrayList<>();
+        stack.push(root);
+        while (!stack.empty()) {
+            BinaryTree<Integer> node = stack.pop();
+            list.add(node.data);
+            if (node.left != null) {
+                stack.push(node.left);
+            }
+            if (node.right != null) {
+                stack.push(node.right);
+            }
+        }
+        Collections.reverse(list);
+        System.out.println(list);
+    }
+
     void levelOrder(BinaryTree<Integer> root) {
         // root node goes in a queue
         // step 1 = create a queue
@@ -253,5 +275,7 @@ public class BinaryTreeDemo {
         // opr.print(root);
         // opr.levelOrder(root);
         opr.verticalOrder(root);
+
+        opr.postOrderIterative(root);
     }
 }
