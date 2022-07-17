@@ -8,6 +8,11 @@ class Node<T> {
         this.data = data;
         next = null;
     }
+
+    Node(T data, Node<T> next) {
+        this.data = data;
+        this.next = next;
+    }
 }
 
 class LinkedListOperations<T> {
@@ -26,13 +31,18 @@ class LinkedListOperations<T> {
     }
 
     void KthfromEnd(int k) {
-        System.out.println("Here");
         if (start == null) {
-            System.out.println("Linked List is empty");
+            System.out.println("LL is empty");
             return;
         }
-        Node<T> p = start;
-        Node<T> q = start;
+        if (start.next == null) { // if list contains only one element
+            start = null;
+            System.out.println("List is empty now");
+            return;
+        }
+        Node<T> temp = new Node(-1, start);
+        Node<T> p = temp;
+        Node<T> q = temp;
         for (int i = 1; i <= k; i++) {
             q = q.next;
         }
@@ -40,15 +50,22 @@ class LinkedListOperations<T> {
             p = p.next;
             q = q.next;
         }
-        p.next = p.next.next;
+        if (p.next == start) { // true only when there are two elements in the list
+            start = start.next;
+        } else {
+            p.next = p.next.next;
+        }
     }
 
     void print() {
         Node<T> temp = start;
+        System.out.println("******************");
         while (temp != null) {
             System.out.print(temp.data + " ");
             temp = temp.next;
         }
+        System.out.println();
+        System.out.println("******************");
         System.out.println();
     }
 }
