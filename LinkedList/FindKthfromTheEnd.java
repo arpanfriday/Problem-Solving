@@ -55,33 +55,33 @@ class LinkedListOperations<T> {
 
 public class FindKthfromTheEnd {
     public static void main(String[] args) {
-        try (Scanner sc = new Scanner(System.in)) {
-            LinkedListOperations<Integer> opr = new LinkedListOperations<>();
-            while (true) {
-                System.out.println("1. Add element at the end of Linked List");
-                System.out.println("2. Find the Kth Element from the end");
-                System.out.println("3. Print the Linked List");
-                System.out.println("10. Exit");
-                System.out.println("Enter the choice: ");
-                int choice = sc.nextInt();
-                Node<Integer> node;
-                int data;
-                switch (choice) {
-                    case 1:
-                        System.out.println("Enter the data for node");
-                        data = sc.nextInt();
-                        node = new Node<>(data);
-                        opr.addAtEnd(node);
-                        break;
-                    case 2:
-                        opr.KthfromEnd();
-                        break;
-                    case 3:
-                        opr.print();
-                        break;
-                    case 10:
-                        return;
-                }
+        Scanner sc = new Scanner(System.in);
+        LinkedListOperations<Integer> opr = new LinkedListOperations<>();
+        while (true) {
+            System.out.println("1. Add element at the end of Linked List");
+            System.out.println("2. Find the Kth Element from the end");
+            System.out.println("3. Print the Linked List");
+            System.out.println("10. Exit");
+            System.out.println("Enter the choice: ");
+            int choice = sc.nextInt();
+            Node<Integer> node;
+            int data;
+            switch (choice) {
+                case 1:
+                    System.out.println("Enter the data for node");
+                    data = sc.nextInt();
+                    node = new Node<>(data);
+                    opr.addAtEnd(node);
+                    break;
+                case 2:
+                    opr.KthfromEnd();
+                    break;
+                case 3:
+                    opr.print();
+                    break;
+                case 10:
+                    sc.close();
+                    return;
             }
         }
     }
