@@ -123,6 +123,31 @@ class LinkedListOperations<T> {
         temp.next = temp.next.next;
         print();
     }
+
+    void reverseCaller() {
+        start = reverse(start, null);
+        Node<T> temp = start;
+        System.out.println("**********************");
+        if (temp == null)
+            System.out.print("LL is empty");
+        else
+            while (temp != null) {
+                System.out.print(temp.data + " ");
+                temp = temp.next;
+            }
+        System.out.println();
+        System.out.println("**********************");
+        print();
+    }
+
+    Node<T> reverse(Node<T> currentNode, Node<T> previousNode) {
+        if (currentNode == null) {
+            return previousNode;
+        }
+        Node<T> ahead = currentNode.next;
+        currentNode.next = previousNode;
+        return reverse(ahead, currentNode);
+    }
 }
 
 public class LinkedListDemo {
@@ -138,6 +163,7 @@ public class LinkedListDemo {
             System.out.println("|   4. Delete at begenning");
             System.out.println("|   5. Delete at ending");
             System.out.println("|   6. Delete at middle");
+            System.out.println("|   7. Reverse");
             System.out.println("|   10. Exit");
             System.out.print("|   Enter the choice: ");
             int choice = sc.nextInt();
@@ -176,12 +202,15 @@ public class LinkedListDemo {
                     pos = sc.nextInt();
                     opr.deleteAtMiddle(pos - 1);
                     break;
+                case 7:
+                    opr.reverseCaller();
+                    break;
                 case 10:
+                    sc.close();
                     return;
                 default:
                     break;
             }
-            // sc.close();
         }
     }
 }
